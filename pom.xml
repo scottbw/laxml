@@ -9,7 +9,7 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>uk.ac.bolton</groupId>
+	<groupId>org.laxml</groupId>
 	<artifactId>laxml</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Laxml</name>
