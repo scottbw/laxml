@@ -27,12 +27,6 @@ import org.apache.commons.logging.Log;
 import org.jdom.Element;
 import org.jdom.Namespace;
 
-/**
- * Laxml - the XML library that assumes developers are human and make mistakes :)
- * 
- * Use these static methods to get child Elements of JDom elements irrespective of
- * incorrect namespaces and using the wrong case in tag names
- */
 public class Lax {
 	
 	/**
@@ -50,8 +44,8 @@ public class Lax {
 			return elements;
 		} catch (LaxException e) {
 			elements = e.getElements();
-			if (e.isMisspelled()) log.warn("one or more '"+childElementName+"' elements used incorrect name");
-			if (e.isIncorrectNamespace()) log.warn("one or more '"+childElementName+"' elements used incorrect namespace");
+			if (e.isMisspelled()) log.warn("elements uses incorrect name:"+childElementName);
+			if (e.isIncorrectNamespace()) log.warn("elements use incorrect namespace:"+elements.get(0).getNamespaceURI());
 			return elements;
 		}
 	}
@@ -60,8 +54,8 @@ public class Lax {
 		try {
 			return Lax.getChild(parentElement, childElementName, preferredNamespace);
 		} catch (SingleElementException e) {
-			if (e.isMisspelled()) log.warn("one or more '"+childElementName+"' elements used incorrect name");
-			if (e.isIncorrectNamespace()) log.warn("one or more '"+childElementName+"' elements used incorrect namespace");
+			if (e.isMisspelled()) log.warn("elements uses incorrect name:"+childElementName);
+			if (e.isIncorrectNamespace()) log.warn("elements use incorrect namespace:"+e.getElements().get(0).getNamespaceURI());
 			log.warn("multiple '"+childElementName+"' child elements returned instead of a single element; ignoring all but the first child element found");
 			return e.getElements().get(0);
 		}

@@ -24,11 +24,10 @@ import java.util.List;
 import org.jdom.Element;
 
 /**
- * An exception thrown when only a single child element is expected, but multiple possibles are found
+ * @author scottw
+ *
  */
 public class SingleElementException extends LaxException {
-
-	private static final long serialVersionUID = -3336791486685207811L;
 
 	public SingleElementException(List<Element> elements) {
 		super(elements);
